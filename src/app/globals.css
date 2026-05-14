@@ -1,0 +1,51 @@
+@import "tailwindcss";
+@import "pretendard/dist/web/variable/pretendardvariable.css";
+
+@theme inline {
+  --color-night: #0a0a0b;
+  --color-hall: #111114;
+  --color-hall-elevated: #16161a;
+  --color-seam: #2a2a2e;
+  --color-bone: #ededed;
+  --color-ash: #9a9aa0;
+  --color-gold: #e6c36a;
+  --color-glow: #7dd3fc;
+
+  --font-sans: "Pretendard Variable", system-ui, -apple-system, "Segoe UI",
+    Roboto, sans-serif;
+  --font-display: var(--font-cinzel);
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  background-color: var(--color-night);
+  color: var(--color-bone);
+}
+
+body {
+  font-family: var(--font-sans);
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--color-gold);
+  color: var(--color-night);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-seam);
+  border-radius: 4px;
+}
