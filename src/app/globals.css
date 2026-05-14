@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "pretendard/dist/web/variable/pretendardvariable.css";
 
 @theme inline {
   --color-night: #0a0a0b;
@@ -8,12 +7,24 @@
   --color-seam: #2a2a2e;
   --color-bone: #ededed;
   --color-ash: #9a9aa0;
+  --color-mist: #c8c8cd;
   --color-gold: #e6c36a;
   --color-glow: #7dd3fc;
+  --color-parchment: #e3dac9;
 
-  --font-sans: "Pretendard Variable", system-ui, -apple-system, "Segoe UI",
+  /* 폰트 체인 — Griun 우선, 한자/누락 글리프는 CJK 폴백으로 자동 처리 */
+  --font-sans: var(--font-griun), "Apple SD Gothic Neo", "Malgun Gothic",
+    "Noto Sans CJK KR", "Noto Sans KR", system-ui, -apple-system, "Segoe UI",
     Roboto, sans-serif;
-  --font-display: var(--font-cinzel);
+  --font-display: var(--font-griun), "Apple SD Gothic Neo", "Malgun Gothic",
+    "Noto Sans CJK KR", system-ui, sans-serif;
+  --font-serif: var(--font-griun), "Apple SD Gothic Neo", "Noto Serif CJK KR",
+    Georgia, "Times New Roman", serif;
+
+  /* 한자 전용 유틸 — `font-cjk` 클래스로 호출. Gowun Batang (한자 풀세트) 우선. */
+  --font-cjk: var(--font-gowun), "Apple SD Gothic Neo", "Hiragino Sans",
+    "Noto Sans CJK KR", "Malgun Gothic", "Microsoft YaHei", system-ui,
+    sans-serif;
 }
 
 :root {
@@ -36,6 +47,19 @@ body {
 ::selection {
   background-color: var(--color-gold);
   color: var(--color-night);
+}
+
+/* 모든 텍스트 요소가 마우스 오버 시 parchment 톤으로 전환.
+   링크/버튼은 각자의 hover 규칙 유지. 터치 기기에서는 :hover 가 자연스럽게
+   미작동하므로 @media 래퍼는 생략. */
+h1, h2, h3, h4, h5, h6, p, span, li, dd, dt, blockquote, figcaption, label, em, strong, q, code {
+  transition: color 0.25s ease-out;
+}
+
+h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover,
+p:hover, span:hover, li:hover, dd:hover, dt:hover, blockquote:hover,
+figcaption:hover, label:hover, em:hover, strong:hover, q:hover, code:hover {
+  color: var(--color-parchment) !important;
 }
 
 ::-webkit-scrollbar {

@@ -1,39 +1,44 @@
 import type { Metadata } from "next";
-import { Cinzel } from "next/font/google";
+import localFont from "next/font/local";
+import { Gowun_Batang } from "next/font/google";
 import "./globals.css";
-import { SiteHeader } from "@/components/site-header";
-import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/nav/site-header";
+import { SiteFooter } from "@/components/nav/site-footer";
+import { SITE } from "@/config/site";
 
-const cinzel = Cinzel({
-  variable: "--font-cinzel",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+const griun = localFont({
+  src: "./fonts/Griun_PolSensibility-Rg.ttf",
+  variable: "--font-griun",
   display: "swap",
+  weight: "400",
 });
 
-const SITE_URL = "https://crazyones.us";
-const SITE_DESC =
-  "미쳐야 미친다. 세상을 바꿀 수 있다고 믿는 형제들의 회관.";
+const gowun = Gowun_Batang({
+  variable: "--font-gowun",
+  weight: ["400", "700"],
+  display: "swap",
+  preload: false,
+});
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
+  metadataBase: new URL(SITE.url),
   title: {
-    default: "광인회관 · Here’s to the Crazy Ones",
-    template: "%s · 광인회관",
+    default: `${SITE.name} · Here’s to the Crazy Ones`,
+    template: `%s · ${SITE.name}`,
   },
-  description: SITE_DESC,
+  description: SITE.description,
   openGraph: {
-    title: "광인회관",
-    description: SITE_DESC,
-    url: SITE_URL,
-    siteName: "광인회관",
+    title: SITE.name,
+    description: SITE.description,
+    url: SITE.url,
+    siteName: SITE.name,
     locale: "ko_KR",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "광인회관",
-    description: SITE_DESC,
+    title: SITE.name,
+    description: SITE.description,
   },
   robots: { index: true, follow: true },
 };
@@ -42,7 +47,10 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ko" className={`${cinzel.variable} h-full`}>
+    <html
+      lang="ko"
+      className={`${griun.variable} ${gowun.variable} h-full`}
+    >
       <body className="min-h-full flex flex-col bg-night text-bone antialiased">
         <SiteHeader />
         <main className="flex-1">{children}</main>
