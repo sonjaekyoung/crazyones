@@ -1,10 +1,12 @@
-import { CrazyOnes } from "@/components/home/crazy-ones";
+import { HeroFlag } from "@/components/home/hero-flag";
+import { BrothersMarquee } from "@/components/home/brothers-marquee";
 import { NewsletterCTA } from "@/components/home/newsletter-cta";
 
 export default function Page() {
   return (
     <>
-      <CrazyOnes />
+      <HeroFlag />
+      <BrothersMarquee />
       <NewsletterCTA />
     </>
   );

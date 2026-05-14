@@ -4,6 +4,7 @@ import { Gowun_Batang } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/nav/site-header";
 import { SiteFooter } from "@/components/nav/site-footer";
+import { LanguageProvider } from "@/lib/language-context";
 import { SITE } from "@/config/site";
 
 const griun = localFont({
@@ -51,10 +52,12 @@ export default function RootLayout({
       lang="ko"
       className={`${griun.variable} ${gowun.variable} h-full`}
     >
-      <body className="min-h-full flex flex-col bg-night text-bone antialiased">
-        <SiteHeader />
-        <main className="flex-1">{children}</main>
-        <SiteFooter />
+      <body className="min-h-full overflow-x-hidden bg-night text-bone antialiased">
+        <LanguageProvider>
+          <SiteHeader />
+          <main className="relative z-0 min-h-screen bg-night">{children}</main>
+          <SiteFooter />
+        </LanguageProvider>
       </body>
     </html>
   );

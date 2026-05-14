@@ -73,3 +73,112 @@ figcaption:hover, label:hover, em:hover, strong:hover, q:hover, code:hover {
   background: var(--color-seam);
   border-radius: 4px;
 }
+
+@keyframes hero-loop-fade {
+  0%, 100% {
+    opacity: 1;
+  }
+  10%, 86% {
+    opacity: 0;
+  }
+}
+
+.hero-loop-fade-overlay {
+  animation: hero-loop-fade 6.75s linear infinite;
+}
+
+@keyframes brothers-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-brothers-marquee {
+  animation: brothers-marquee 34s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-brothers-marquee {
+    animation-duration: 90s;
+  }
+}
+
+.brothers-marquee {
+  mask-image: linear-gradient(to right, transparent, black 11%, black 89%, transparent);
+}
+
+.brothers-marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: brothers-marquee-flow 22s linear infinite;
+}
+
+.brothers-marquee-set {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  padding-right: clamp(2.5rem, 6vw, 5rem);
+}
+
+.brothers-marquee-item {
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 4vw, 3.15rem);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgb(237 237 237 / 0.42);
+  transition: color 0.25s ease-out;
+}
+
+.brothers-marquee-item:hover {
+  color: rgb(237 237 237 / 0.8) !important;
+}
+
+@keyframes brothers-marquee-flow {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brothers-marquee-track {
+    animation-duration: 70s;
+  }
+}
+
+.brothers-marquee {
+  white-space: nowrap;
+}
+
+.brothers-marquee-track {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  animation-duration: 32s;
+}
+
+.brothers-marquee-set {
+  min-width: max-content;
+  flex-shrink: 0;
+  gap: clamp(1rem, 2.8vw, 2rem);
+  padding-right: clamp(1rem, 2.8vw, 2rem);
+}
+
+.brothers-marquee-item {
+  display: inline-flex;
+  min-width: clamp(7rem, 14vw, 12rem);
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(237 237 237 / 0.14);
+  background: rgb(237 237 237 / 0.035);
+  padding: 0.72rem 1.25rem 0.62rem;
+  font-size: clamp(1rem, 2.2vw, 1.65rem);
+  letter-spacing: 0.1em;
+}

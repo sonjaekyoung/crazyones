@@ -3,8 +3,8 @@
 import Image from "next/image";
 import { useState } from "react";
 
-const VIDEO_SRC = "/videos/gwangin-flag.mp4";
-const VIDEO_SRC_WEBM = "/videos/gwangin-flag.webm";
+const VIDEO_SRC = "/videos/hero.mp4";
+const VIDEO_FALLBACK_SRC = "/videos/hero.mov";
 
 /**
  * B안 — Ambient (앰비라이트)
@@ -48,8 +48,8 @@ export function HeroFlagAmbient() {
           onError={() => setVideoOk(false)}
           className="pointer-events-none absolute left-1/2 top-1/2 h-auto min-h-full w-[130vw] max-w-none -translate-x-1/2 -translate-y-1/2 scale-110 object-cover opacity-70 blur-[100px] saturate-150"
         >
-          <source src={VIDEO_SRC_WEBM} type="video/webm" />
           <source src={VIDEO_SRC} type="video/mp4" />
+          <source src={VIDEO_FALLBACK_SRC} type="video/quicktime" />
         </video>
       )}
 
@@ -68,8 +68,8 @@ export function HeroFlagAmbient() {
               onError={() => setVideoOk(false)}
               className="absolute inset-0 h-full w-full object-cover"
             >
-              <source src={VIDEO_SRC_WEBM} type="video/webm" />
               <source src={VIDEO_SRC} type="video/mp4" />
+              <source src={VIDEO_FALLBACK_SRC} type="video/quicktime" />
             </video>
           ) : (
             <div className="absolute inset-0 flex items-center justify-center bg-hall">
