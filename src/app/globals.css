@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "WantedVertiky";
+  src: url("/fonts/Vertiky.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GriunCanvas";
+  src: url("/fonts/Griun_PolSensibility-Rg.ttf") format("truetype");
+  font-display: swap;
+}
+
 @theme inline {
   --color-night: #0a0a0b;
   --color-hall: #111114;
@@ -156,6 +168,15 @@ figcaption:hover, label:hover, em:hover, strong:hover, q:hover, code:hover {
 
 .brothers-marquee {
   white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.brothers-marquee::-webkit-scrollbar {
+  display: none;
 }
 
 .brothers-marquee-track {
@@ -164,21 +185,77 @@ figcaption:hover, label:hover, em:hover, strong:hover, q:hover, code:hover {
   animation-duration: 32s;
 }
 
+.brothers-marquee:hover .brothers-marquee-track,
+.brothers-marquee:focus-within .brothers-marquee-track {
+  animation-play-state: paused;
+}
+
+.brothers-marquee:hover,
+.brothers-marquee:focus-within {
+  cursor: grab;
+}
+
 .brothers-marquee-set {
   min-width: max-content;
   flex-shrink: 0;
-  gap: clamp(1rem, 2.8vw, 2rem);
-  padding-right: clamp(1rem, 2.8vw, 2rem);
+  gap: clamp(5rem, 10vw, 8rem);
+  padding-right: clamp(5rem, 10vw, 8rem);
 }
 
 .brothers-marquee-item {
   display: inline-flex;
-  min-width: clamp(7rem, 14vw, 12rem);
+  position: relative;
+  z-index: 1;
+  width: clamp(10.5rem, 22.5vw, 15.75rem);
+  aspect-ratio: 2.32 / 1;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgb(237 237 237 / 0.14);
-  background: rgb(237 237 237 / 0.035);
-  padding: 0.72rem 1.25rem 0.62rem;
-  font-size: clamp(1rem, 2.2vw, 1.65rem);
-  letter-spacing: 0.1em;
+  cursor: pointer;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  text-decoration: none;
+  pointer-events: auto;
+  transition:
+    transform 0.25s ease-out;
+}
+
+.brothers-marquee-item::before {
+  content: "";
+  position: absolute;
+  inset: -1.5rem -2rem;
+}
+
+.brothers-marquee-item img {
+  filter: grayscale(1);
+  mix-blend-mode: normal;
+  opacity: 1;
+  pointer-events: none;
+  transition:
+    filter 0.25s ease-out,
+    opacity 0.25s ease-out;
+}
+
+.brothers-marquee-item:hover {
+  transform: translateY(-2px);
+}
+
+.brothers-marquee-item:hover img {
+  filter: grayscale(1) drop-shadow(0 0 18px rgb(230 195 106 / 0.24));
+}
+
+.brothers-marquee a.brothers-marquee-item {
+  overflow: visible !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+.brothers-marquee a.brothers-marquee-item > img {
+  transform: scale(var(--logo-scale, 1)) !important;
 }
