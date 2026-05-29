@@ -3,6 +3,7 @@ export type Brother = {
   companyName: string;
   founderName: string;
   founderTitle?: string;
+  bounty?: string;
   logoUrl?: string;
   founderImageUrl?: string;
   description?: string;
