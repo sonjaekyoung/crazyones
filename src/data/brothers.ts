@@ -3,30 +3,58 @@ import type { Brother } from "@/types/brother";
 /**
  * 광인 형제 명단.
  *
- * 회주가 직접 큐레이팅한다 — 자동 폼은 만들지 않는다 (톤 깨짐 방지).
+ * 지금은 인물 중심 수배지 구조를 먼저 잡아두고, 사진/회사 정보는 나중에
+ * 각 entry 에 채워 넣는다.
  *
  * 추가/수정 방법:
- *   1) 로고 이미지 → /public/images/brothers/<id>-logo.svg  (SVG 우선, 안 되면 PNG/투명)
- *   2) 얼굴 사진   → /public/images/brothers/<id>-founder.jpg (가능하면 1:1 또는 4:5, 1200px+)
- *   3) 아래 배열의 해당 entry 를 채운다.
+ *   1) 인물 사진   → /public/images/brothers/<id>-founder.jpg
+ *   2) 회사 로고   → /public/images/brothers/<id>-logo.svg
+ *   3) 기업가치    → bounty 필드에 표시 문구를 입력한다.
  *
- * logoUrl / founderImageUrl / websiteUrl 이 비어있으면 카드가 자동으로 fallback UI 를 표시한다.
+ * founderImageUrl / logoUrl / bounty 가 비어 있으면 카드가 자동으로
+ * 준비중 UI 를 표시한다.
  */
-export const brothers: Brother[] = [
-  { id: "liner", companyName: "Liner", founderName: "이름 미정" },
-  { id: "xmayacrew", companyName: "xmayacrew", founderName: "이름 미정" },
-  { id: "vacatio", companyName: "VACATIO", founderName: "이름 미정" },
-  { id: "ironpig", companyName: "IRONPIG", founderName: "이름 미정" },
-  { id: "endo-health", companyName: "ENDO HEALTH", founderName: "이름 미정" },
-  { id: "planfit", companyName: "Planfit", founderName: "이름 미정" },
-  { id: "cstt", companyName: "CSTT", founderName: "이름 미정" },
-  { id: "zdvc", companyName: "ZDVC", founderName: "이름 미정" },
-  { id: "wrtn", companyName: "wrtn.", founderName: "이름 미정" },
-  { id: "doeat", companyName: "doeat", founderName: "이름 미정" },
-  { id: "delightroom", companyName: "DelightRoom", founderName: "이름 미정" },
-  { id: "sooho", companyName: "SooHo", founderName: "이름 미정" },
-  { id: "f1-studio", companyName: "F1 studio", founderName: "이름 미정" },
-  { id: "lingoalpha", companyName: "lingoalpha", founderName: "이름 미정" },
-  { id: "any-way", companyName: "ANY-WAY", founderName: "이름 미정" },
-  { id: "nb", companyName: "NB", founderName: "이름 미정" },
-];
+const BROTHER_NAMES = [
+  "정근식",
+  "김민욱",
+  "김용진",
+  "김주환",
+  "김진우",
+  "김호성",
+  "남성필",
+  "김민재",
+  "박도현",
+  "박지수",
+  "방역주",
+  "백현우",
+  "손균우",
+  "손재경",
+  "신재명",
+  "오준호",
+  "우찬민",
+  "유도희",
+  "윤용섭",
+  "윤희상",
+  "이민석",
+  "이세영",
+  "이수지",
+  "이윤석",
+  "지동환",
+  "지현준",
+  "최재형",
+  "김태용",
+  "표시형",
+  "김하경",
+  "최찬열",
+  "김민상",
+  "이도현",
+  "이재헌",
+  "정성현",
+] as const;
+
+export const brothers: Brother[] = BROTHER_NAMES.map((founderName, index) => ({
+  id: `brother-${String(index + 1).padStart(2, "0")}`,
+  companyName: "회사 미정",
+  founderName,
+  bounty: "기업가치 미정",
+}));

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const VIDEO_SRC = "/videos/hero.mp4";
 const VIDEO_FALLBACK_SRC = "/videos/hero.mov";
@@ -18,6 +18,35 @@ const VIDEO_FALLBACK_SRC = "/videos/hero.mov";
  */
 export function HeroFlagAmbient() {
   const [videoOk, setVideoOk] = useState(true);
+  const [videoReady, setVideoReady] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoVisible = videoOk && videoReady;
+
+  useEffect(() => {
+    if (!videoOk) return;
+
+    const video = videoRef.current;
+    if (!video) return;
+
+    const markReady = () => setVideoReady(true);
+
+    if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+      markReady();
+    }
+
+    video.addEventListener("loadeddata", markReady);
+    video.addEventListener("canplay", markReady);
+    video.addEventListener("playing", markReady);
+    void video.play().catch(() => {
+      setVideoReady(false);
+    });
+
+    return () => {
+      video.removeEventListener("loadeddata", markReady);
+      video.removeEventListener("canplay", markReady);
+      video.removeEventListener("playing", markReady);
+    };
+  }, [videoOk]);
 
   return (
     <section className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-night">
@@ -45,8 +74,13 @@ export function HeroFlagAmbient() {
           playsInline
           preload="auto"
           aria-hidden
-          onError={() => setVideoOk(false)}
-          className="pointer-events-none absolute left-1/2 top-1/2 h-auto min-h-full w-[130vw] max-w-none -translate-x-1/2 -translate-y-1/2 scale-110 object-cover opacity-70 blur-[100px] saturate-150"
+          onError={() => {
+            setVideoReady(false);
+            setVideoOk(false);
+          }}
+          className={`pointer-events-none absolute left-1/2 top-1/2 h-auto min-h-full w-[130vw] max-w-none -translate-x-1/2 -translate-y-1/2 scale-110 object-cover blur-[100px] saturate-150 transition-opacity duration-1000 ease-out ${
+            videoVisible ? "opacity-70" : "opacity-0"
+          }`}
         >
           <source src={VIDEO_SRC} type="video/mp4" />
           <source src={VIDEO_FALLBACK_SRC} type="video/quicktime" />
@@ -58,15 +92,23 @@ export function HeroFlagAmbient() {
         <div className="relative aspect-video w-full max-w-[1100px] overflow-hidden rounded-md shadow-[0_30px_120px_-30px_rgba(0,0,0,0.95)] ring-1 ring-seam/50">
           {videoOk ? (
             <video
+              ref={videoRef}
               autoPlay
               loop
               muted
               playsInline
               preload="auto"
-              poster="/logo/kuang.png"
               aria-hidden
-              onError={() => setVideoOk(false)}
-              className="absolute inset-0 h-full w-full object-cover"
+              onCanPlay={() => setVideoReady(true)}
+              onLoadedData={() => setVideoReady(true)}
+              onPlaying={() => setVideoReady(true)}
+              onError={() => {
+                setVideoReady(false);
+                setVideoOk(false);
+              }}
+              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ease-out ${
+                videoVisible ? "opacity-100" : "opacity-0"
+              }`}
             >
               <source src={VIDEO_SRC} type="video/mp4" />
               <source src={VIDEO_FALLBACK_SRC} type="video/quicktime" />
@@ -82,6 +124,12 @@ export function HeroFlagAmbient() {
               />
             </div>
           )}
+          <div
+            aria-hidden
+            className={`pointer-events-none absolute inset-0 bg-black transition-opacity duration-1000 ease-out ${
+              videoVisible ? "opacity-0" : "opacity-100"
+            }`}
+          />
         </div>
       </div>
 

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLanguage, type Language } from "@/lib/language-context";
 
 const VIDEO_SRC = "/videos/hero.mp4";
@@ -22,12 +22,41 @@ const COPY = {
 
 export function HeroFlag() {
   const [videoOk, setVideoOk] = useState(true);
+  const [videoReady, setVideoReady] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const { language } = useLanguage();
   const copy = COPY[language];
+  const videoVisible = videoOk && videoReady;
   const titleSizeClass =
     language === "ko"
       ? "text-[clamp(3.25rem,17cqw,10rem)]"
       : "text-[clamp(2.1rem,8.8cqw,5.85rem)]";
+
+  useEffect(() => {
+    if (!videoOk) return;
+
+    const video = videoRef.current;
+    if (!video) return;
+
+    const markReady = () => setVideoReady(true);
+
+    if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+      markReady();
+    }
+
+    video.addEventListener("loadeddata", markReady);
+    video.addEventListener("canplay", markReady);
+    video.addEventListener("playing", markReady);
+    void video.play().catch(() => {
+      setVideoReady(false);
+    });
+
+    return () => {
+      video.removeEventListener("loadeddata", markReady);
+      video.removeEventListener("canplay", markReady);
+      video.removeEventListener("playing", markReady);
+    };
+  }, [videoOk]);
 
   return (
     <section id="about" className="relative h-[100svh] min-h-[640px] w-full overflow-hidden">
@@ -47,20 +76,35 @@ export function HeroFlag() {
 
       {videoOk && (
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
           preload="auto"
-          poster="/logo/kuang.png"
           aria-hidden
-          onError={() => setVideoOk(false)}
-          className="absolute inset-0 h-full w-full object-cover"
+          onCanPlay={() => setVideoReady(true)}
+          onLoadedData={() => setVideoReady(true)}
+          onPlaying={() => setVideoReady(true)}
+          onError={() => {
+            setVideoReady(false);
+            setVideoOk(false);
+          }}
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ease-out ${
+            videoVisible ? "opacity-100" : "opacity-0"
+          }`}
         >
           <source src={VIDEO_SRC} type="video/mp4" />
           <source src={VIDEO_FALLBACK_SRC} type="video/quicktime" />
         </video>
       )}
+
+      <div
+        aria-hidden
+        className={`pointer-events-none absolute inset-0 z-[6] bg-black transition-opacity duration-1000 ease-out ${
+          videoVisible ? "opacity-0" : "opacity-100"
+        }`}
+      />
 
       <div aria-hidden className="absolute inset-0 bg-black/50" />
       <div
@@ -90,7 +134,7 @@ export function HeroFlag() {
 
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 z-20 bg-night hero-loop-fade-overlay"
+        className="pointer-events-none absolute inset-0 z-[8] bg-night hero-loop-fade-overlay"
       />
       <div
         aria-hidden
