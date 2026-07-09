@@ -7,7 +7,7 @@ import { useLanguage, type Language } from "@/lib/language-context";
 const LABELS = {
   ko: {
     about: "소개",
-    seniors: "선배 광인들",
+    seniors: "광인들",
     faq: "FAQ",
     toggle: "EN",
     homeLabel: "광인회관 홈",

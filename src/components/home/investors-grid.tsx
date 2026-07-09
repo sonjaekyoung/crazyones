@@ -8,16 +8,14 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 
 const COPY = {
   ko: {
-    headline1: "광인회관 출신 창업자들은",
-    headline2: "총 수천억을 투자받고,",
-    headline3: "수조 원 규모의 기업을 만들었습니다.",
+    headline: "세계 최고 투자자는 광인들을 알아보고,",
+    headline2: "수천억 원의 투자를 유치했다.",
   },
   en: {
-    headline1: "Gwangin Hall alumni have raised",
-    headline2: "hundreds of millions of dollars",
-    headline3: "and built companies worth billions.",
+    headline: "Gwangin Hall alumni have raised hundreds of millions of dollars",
+    headline2: "and built companies worth billions.",
   },
-} satisfies Record<Language, Record<string, string>>;
+} satisfies Record<Language, { headline: string; headline2: string }>;
 
 const LOGOS = [
   { src: "/images/main-page/a16z-bw.png",       alt: "a16z" },
@@ -54,11 +52,11 @@ export function InvestorsGrid() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 1, ease: EASE }}
-            className="font-serif text-[clamp(1.6rem,3.6vw,2.6rem)] font-bold leading-[1.2] tracking-tight text-bone"
+            className="font-serif text-[clamp(1.6rem,3.6vw,2.6rem)] font-bold leading-[1.6] tracking-tight text-bone"
           >
-            {copy.headline1}{" "}
-            <span className="text-gold">{copy.headline2}</span>{" "}
-            {copy.headline3}
+            {copy.headline}
+            <br />
+            {copy.headline2}
           </motion.p>
         </div>
 

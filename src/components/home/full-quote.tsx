@@ -37,7 +37,7 @@ export function FullQuote() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-120px" }}
         transition={{ duration: 1.2, ease: EASE }}
-        className="relative z-10 max-w-4xl whitespace-pre-line text-center font-serif text-[clamp(1.45rem,4.2vw,2.75rem)] font-bold leading-[1.3] tracking-tight text-bone"
+        className="relative z-10 max-w-4xl whitespace-pre-line text-center font-serif text-[clamp(1.45rem,4.2vw,2.75rem)] font-bold leading-[1.6] tracking-tight text-bone"
       >
         {COPY[language]}
       </motion.p>

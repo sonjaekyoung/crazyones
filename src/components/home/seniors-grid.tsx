@@ -7,7 +7,7 @@ import { useLanguage, type Language } from "@/lib/language-context";
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 const COPY = {
-  ko: { title: "선배 광인들" },
+  ko: { title: "광인들" },
   en: { title: "Gwangin Hall Alumni" },
 } satisfies Record<Language, { title: string }>;
 

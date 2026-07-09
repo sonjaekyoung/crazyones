@@ -35,13 +35,13 @@ export function EnvironmentCTA() {
 
       <div className="relative z-10 mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-24">
         {/* ── Text side ── */}
-        <div>
+        <div className="text-center lg:text-left">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 1, ease: EASE }}
-            className="whitespace-pre-line font-serif text-[clamp(1.9rem,5cqw,3rem)] font-bold leading-[1.1] tracking-tight text-bone"
+            className="whitespace-pre-line font-serif text-[clamp(1.9rem,5cqw,3rem)] font-bold leading-[1.4] tracking-tight text-bone"
           >
             {copy.title}
           </motion.h2>
