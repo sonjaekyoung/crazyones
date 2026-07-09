@@ -47,7 +47,7 @@ export function WhoLives() {
         {/* Two-column body */}
         <div className="mt-16 grid grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-24">
           {/* Text */}
-          <div className="space-y-7">
+          <div className="space-y-7 text-center lg:text-left">
             {([copy.p1, copy.p2, copy.p3] as const).map((text, i) => (
               <motion.p
                 key={i}

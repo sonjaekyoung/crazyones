@@ -12,11 +12,13 @@ const COPY = {
     eyebrow: "Here\u2019s to the Crazy Ones",
     title: "\uad11\uc778\ud68c\uad00",
     subtitle: "\ubbf8\uce5c \ucc3d\uc5c5\uac00\ub4e4\uc774 \ubaa8\uc5ec\uc0ac\ub294 \uacf5\uac04",
+    cta: "문의하기",
   },
   en: {
     eyebrow: "Here\u2019s to the Crazy Ones",
     title: "GWANGIN HALL",
     subtitle: "A home for the most crazy founders.",
+    cta: "Contact Us",
   },
 } satisfies Record<Language, Record<string, string>>;
 
@@ -130,6 +132,12 @@ export function HeroFlag() {
         <p className="max-w-full whitespace-nowrap text-[clamp(1rem,5.8cqw,2.45rem)] leading-none text-bone/90 drop-shadow-[0_5px_22px_rgba(0,0,0,0.96)]">
           {copy.subtitle}
         </p>
+        <a
+          href="mailto:crazyones.us@gmail.com"
+          className="mt-2 inline-flex items-center gap-2.5 rounded-full bg-bone px-7 py-3.5 text-[clamp(0.85rem,2.8cqw,1.05rem)] font-semibold text-night shadow-[0_8px_32px_rgba(0,0,0,0.55)] transition-all duration-300 hover:bg-gold hover:shadow-[0_8px_32px_rgba(230,195,106,0.28)]"
+        >
+          {copy.cta}
+        </a>
       </div>
 
       <div

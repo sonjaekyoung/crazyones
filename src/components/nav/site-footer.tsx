@@ -3,7 +3,7 @@
 import { BLOG_URL } from "@/config/site";
 import { useLanguage, type Language } from "@/lib/language-context";
 
-const CONTACT_EMAIL = "contact@crazyones.us";
+const CONTACT_EMAIL = "crazyones.us@gmail.com";
 
 const COPY = {
   ko: {
@@ -54,31 +54,31 @@ export function SiteFooter() {
       />
       <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-8 py-6 text-bone/65 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="font-display text-[10px] uppercase tracking-[0.4em] text-bone/38">
+          <p className="font-display text-sm uppercase tracking-[0.4em] text-bone/50">
             {copy.kicker}
           </p>
-          <p className="mt-3 text-sm text-bone/50">{copy.motto}</p>
-          <p className="mt-5 text-xs text-bone/30">
+          <p className="mt-3 text-base text-bone/65 sm:text-lg">{copy.motto}</p>
+          <p className="mt-5 text-sm text-bone/40">
             &copy; {year} {copy.name}
           </p>
         </div>
 
         <div className="flex items-end justify-between gap-8 sm:justify-end">
-          <div className="flex min-w-0 flex-col items-start text-sm leading-tight text-bone/45 sm:items-end">
+          <div className="flex min-w-0 flex-col items-start text-base leading-tight text-bone/55 sm:items-end">
             <a
               href={`mailto:${CONTACT_EMAIL}`}
-              className="max-w-full truncate text-bone/70 transition-colors hover:text-bone"
+              className="max-w-full truncate text-bone/80 transition-colors hover:text-bone"
             >
               {CONTACT_EMAIL}
             </a>
-            <span className="mt-1 text-bone/34">{copy.location}</span>
+            <span className="mt-1.5 text-sm text-bone/45">{copy.location}</span>
           </div>
           <a
             href={BLOG_URL}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={copy.mediaLabel}
-            className="flex items-center justify-center text-bone/48 transition hover:-translate-y-0.5 hover:text-bone"
+            className="flex items-center justify-center text-bone/55 transition hover:-translate-y-0.5 hover:text-bone"
           >
             <SubstackMark />
           </a>

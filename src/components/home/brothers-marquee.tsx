@@ -87,6 +87,12 @@ export function BrothersMarquee() {
         </Link>
       </div> */}
 
+      <div className="relative z-10 mx-auto mb-6 max-w-6xl text-center">
+        <p className="text-base font-semibold uppercase tracking-[0.22em] text-bone/60 sm:text-lg">
+          {language === "ko" ? "출신 기업들" : "Alumni Companies"}
+        </p>
+      </div>
+
       <div className="brothers-marquee relative z-10 mx-auto mt-8 max-w-6xl overflow-hidden py-5">
         <div className="brothers-marquee-track">
           <MarqueeSet />

@@ -46,7 +46,7 @@ export function InvestorsGrid() {
       <div className="relative z-10 mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
 
         {/* ── Left: headline ── */}
-        <div>
+        <div className="text-center lg:text-left">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

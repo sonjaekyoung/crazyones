@@ -9,6 +9,7 @@ const LABELS = {
     about: "소개",
     seniors: "광인들",
     faq: "FAQ",
+    contact: "문의하기",
     toggle: "EN",
     homeLabel: "광인회관 홈",
   },
@@ -16,6 +17,7 @@ const LABELS = {
     about: "About",
     seniors: "Alumni",
     faq: "FAQ",
+    contact: "Contact Us",
     toggle: "KO",
     homeLabel: "Gwangin Hall home",
   },
@@ -64,6 +66,12 @@ export function SiteHeader() {
           <button type="button" onClick={() => scrollTo("faq")} className="transition-colors hover:text-bone">
             {labels.faq}
           </button>
+          <a
+            href="mailto:crazyones.us@gmail.com"
+            className="ml-1 inline-flex items-center rounded-full bg-bone px-4 py-1.5 text-[0.82rem] font-semibold text-night transition-all duration-200 hover:bg-gold sm:ml-2 sm:px-5 sm:text-[0.88rem]"
+          >
+            {labels.contact}
+          </a>
           <button
             type="button"
             aria-label="Toggle language"
