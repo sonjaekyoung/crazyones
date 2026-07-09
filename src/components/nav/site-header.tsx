@@ -2,21 +2,20 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { BLOG_URL } from "@/config/site";
 import { useLanguage, type Language } from "@/lib/language-context";
 
 const LABELS = {
   ko: {
-    brothers: "\ud615\uc81c\ub4e4",
-    media: "\ubbf8\ub514\uc5b4",
-    about: "\uc18c\uac1c",
+    about: "소개",
+    seniors: "선배 광인들",
+    faq: "FAQ",
     toggle: "EN",
-    homeLabel: "\uad11\uc778\ud68c\uad00 \ud648",
+    homeLabel: "광인회관 홈",
   },
   en: {
-    brothers: "Brothers",
-    media: "Media",
     about: "About",
+    seniors: "Alumni",
+    faq: "FAQ",
     toggle: "KO",
     homeLabel: "Gwangin Hall home",
   },
@@ -25,6 +24,13 @@ const LABELS = {
 export function SiteHeader() {
   const { language, toggleLanguage } = useLanguage();
   const labels = LABELS[language];
+
+  function scrollTo(id: string) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
 
   return (
     <header className="fixed left-0 right-0 top-0 z-50 px-6">
@@ -49,23 +55,15 @@ export function SiteHeader() {
         </Link>
 
         <nav className="flex items-center gap-4 text-[0.96rem] text-bone/72 drop-shadow-[0_3px_14px_rgba(0,0,0,0.9)] sm:gap-7 sm:text-[1.08rem]">
-          <Link
-            href="/brothers"
-            className="transition-colors hover:text-bone"
-          >
-            {labels.brothers}
-          </Link>
-          <a
-            href={BLOG_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition-colors hover:text-bone"
-          >
-            {labels.media}
-          </a>
-          <Link href="/#about" className="transition-colors hover:text-bone">
+          <button type="button" onClick={() => scrollTo("environment")} className="transition-colors hover:text-bone">
             {labels.about}
-          </Link>
+          </button>
+          <button type="button" onClick={() => scrollTo("seniors")} className="transition-colors hover:text-bone">
+            {labels.seniors}
+          </button>
+          <button type="button" onClick={() => scrollTo("faq")} className="transition-colors hover:text-bone">
+            {labels.faq}
+          </button>
           <button
             type="button"
             aria-label="Toggle language"

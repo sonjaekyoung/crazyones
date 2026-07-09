@@ -77,7 +77,7 @@ export function BrothersMarquee() {
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.06),transparent_64%)]"
       />
-      <div className="relative z-10 mx-auto flex max-w-6xl items-center justify-end text-bone/62">
+      {/* <div className="relative z-10 mx-auto flex max-w-6xl items-center justify-end text-bone/62">
         <Link
           href="/brothers"
           className="group inline-flex items-center gap-2 whitespace-nowrap text-sm text-bone/72 transition-colors hover:text-bone sm:text-base"
@@ -85,7 +85,7 @@ export function BrothersMarquee() {
           {labels.cta}
           <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
         </Link>
-      </div>
+      </div> */}
 
       <div className="brothers-marquee relative z-10 mx-auto mt-8 max-w-6xl overflow-hidden py-5">
         <div className="brothers-marquee-track">

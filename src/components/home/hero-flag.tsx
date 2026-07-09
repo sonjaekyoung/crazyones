@@ -16,7 +16,7 @@ const COPY = {
   en: {
     eyebrow: "Here\u2019s to the Crazy Ones",
     title: "GWANGIN HALL",
-    subtitle: "A house for founders crazy enough to build.",
+    subtitle: "A home for the most crazy founders.",
   },
 } satisfies Record<Language, Record<string, string>>;
 

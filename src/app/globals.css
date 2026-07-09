@@ -126,7 +126,7 @@ figcaption:hover, label:hover, em:hover, strong:hover, q:hover, code:hover {
   display: flex;
   width: max-content;
   will-change: transform;
-  animation: brothers-marquee-flow 22s linear infinite;
+  animation: brothers-marquee-flow 50s linear infinite;
 }
 
 .brothers-marquee-set {
@@ -182,7 +182,7 @@ figcaption:hover, label:hover, em:hover, strong:hover, q:hover, code:hover {
 .brothers-marquee-track {
   display: inline-flex;
   flex-wrap: nowrap;
-  animation-duration: 32s;
+  animation-duration: 75s;
 }
 
 .brothers-marquee:hover .brothers-marquee-track,
