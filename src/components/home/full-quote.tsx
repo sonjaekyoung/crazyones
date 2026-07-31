@@ -14,7 +14,7 @@ export function FullQuote() {
   const { language } = useLanguage();
 
   return (
-    <section className="relative flex min-h-svh items-center justify-center overflow-hidden bg-hall px-6 py-24">
+    <section className="relative flex min-h-svh items-center justify-center overflow-hidden bg-hall px-6 py-16">
       {/* top edge fade from night */}
       <div
         aria-hidden

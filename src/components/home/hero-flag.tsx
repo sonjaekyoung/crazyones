@@ -31,8 +31,8 @@ export function HeroFlag() {
   const videoVisible = videoOk && videoReady;
   const titleSizeClass =
     language === "ko"
-      ? "text-[clamp(3.25rem,17cqw,10rem)]"
-      : "text-[clamp(2.1rem,8.8cqw,5.85rem)]";
+      ? "text-[clamp(3.85rem,18cqw,10rem)]"
+      : "text-[clamp(2.45rem,9.2cqw,5.85rem)]";
 
   useEffect(() => {
     if (!videoOk) return;
@@ -123,18 +123,18 @@ export function HeroFlag() {
       />
 
       <div className="absolute inset-x-0 top-[56%] z-10 mx-auto flex max-w-6xl -translate-y-1/2 flex-col items-center gap-[clamp(1.45rem,4cqw,2.75rem)] px-5 text-center [container-type:inline-size] sm:px-6">
-        <p className="max-w-full whitespace-nowrap font-display text-[clamp(0.9rem,4.2cqw,1.55rem)] uppercase tracking-[0.28em] text-bone/82 drop-shadow-[0_4px_18px_rgba(0,0,0,0.98)] sm:tracking-[0.36em]">
+        <p className="w-full max-w-full text-center font-display text-[clamp(0.82rem,3.8vw,1.55rem)] uppercase tracking-[0.06em] text-bone/82 drop-shadow-[0_4px_18px_rgba(0,0,0,0.98)] sm:tracking-[0.22em] md:tracking-[0.36em]">
           {copy.eyebrow}
         </p>
         <h1 className={`${titleSizeClass} max-w-full whitespace-nowrap font-display leading-none tracking-[0.05em] text-bone drop-shadow-[0_10px_34px_rgba(0,0,0,0.95)] sm:tracking-[0.08em]`}>
           {copy.title}
         </h1>
-        <p className="max-w-full whitespace-nowrap text-[clamp(1rem,5.8cqw,2.45rem)] leading-none text-bone/90 drop-shadow-[0_5px_22px_rgba(0,0,0,0.96)]">
+        <p className="max-w-full whitespace-nowrap text-[clamp(1.2rem,6.2cqw,2.45rem)] leading-none text-bone/90 drop-shadow-[0_5px_22px_rgba(0,0,0,0.96)]">
           {copy.subtitle}
         </p>
         <a
           href="mailto:crazyones.us@gmail.com"
-          className="mt-2 inline-flex items-center gap-2.5 rounded-full bg-bone px-7 py-3.5 text-[clamp(0.85rem,2.8cqw,1.05rem)] font-semibold text-night shadow-[0_8px_32px_rgba(0,0,0,0.55)] transition-all duration-300 hover:bg-gold hover:shadow-[0_8px_32px_rgba(230,195,106,0.28)]"
+          className="mt-2 inline-flex items-center gap-2.5 rounded-full bg-bone px-8 py-4 text-[clamp(1rem,3cqw,1.1rem)] font-semibold text-night shadow-[0_8px_32px_rgba(0,0,0,0.55)] transition-all duration-300 hover:bg-gold hover:shadow-[0_8px_32px_rgba(230,195,106,0.28)]"
         >
           {copy.cta}
         </a>

@@ -68,7 +68,7 @@ export function BrothersMarquee() {
   const labels = LABELS[language];
 
   return (
-    <section className="relative isolate overflow-hidden bg-night px-6 py-12 sm:py-16">
+    <section className="relative isolate overflow-hidden bg-night px-6 py-8 sm:py-16">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 -top-24 h-24 bg-gradient-to-b from-transparent to-night"

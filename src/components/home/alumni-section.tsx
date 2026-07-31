@@ -26,7 +26,7 @@ export function AlumniSection() {
   const copy = COPY[language];
 
   return (
-    <section className="relative overflow-hidden bg-night px-6 py-24 sm:py-36">
+    <section className="relative overflow-hidden bg-night px-6 py-16 sm:py-36">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_40%_at_50%_30%,rgba(230,195,106,0.05),transparent)]"
@@ -39,7 +39,7 @@ export function AlumniSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8, ease: EASE }}
-          className="mb-6 inline-block border-b border-bone/25 pb-2 text-xs font-semibold uppercase tracking-[0.22em] text-bone/50"
+          className="mb-6 inline-block border-b border-bone/40 pb-2 text-sm font-semibold uppercase tracking-[0.18em] text-bone/80 sm:text-base"
         >
           {copy.eyebrow}
         </motion.p>

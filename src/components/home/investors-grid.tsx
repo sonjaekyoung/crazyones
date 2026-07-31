@@ -37,7 +37,7 @@ export function InvestorsGrid() {
   const copy = COPY[language];
 
   return (
-    <section className="relative overflow-hidden bg-night px-6 py-24 sm:py-36">
+    <section className="relative overflow-hidden bg-night px-6 py-16 sm:py-36">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_65%_50%,rgba(230,195,106,0.05),transparent)]"
@@ -61,7 +61,7 @@ export function InvestorsGrid() {
         </div>
 
         {/* ── Right: 3-column logo grid ── */}
-        <div className="grid grid-cols-3 gap-px overflow-hidden rounded-lg border border-seam bg-seam">
+        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-seam bg-seam sm:grid-cols-3">
           {LOGOS.map((logo, i) => (
             <motion.div
               key={logo.src}
@@ -69,7 +69,7 @@ export function InvestorsGrid() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ delay: i * 0.04, duration: 0.7, ease: EASE }}
-              className="flex items-center justify-center bg-hall p-5 sm:p-6"
+              className="flex items-center justify-center bg-hall p-4 sm:p-6"
             >
               <Image
                 src={logo.src}

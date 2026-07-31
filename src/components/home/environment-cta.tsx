@@ -26,7 +26,7 @@ export function EnvironmentCTA() {
   const copy = COPY[language];
 
   return (
-    <section id="environment" className="relative overflow-hidden bg-night px-6 py-24 sm:py-36">
+    <section id="environment" className="relative overflow-hidden bg-night px-6 py-16 sm:py-36">
       {/* subtle radial glow */}
       <div
         aria-hidden

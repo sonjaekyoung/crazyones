@@ -73,7 +73,7 @@ export function SeniorsGrid() {
   const copy = COPY[language];
 
   return (
-    <section id="seniors" className="relative overflow-hidden bg-night px-6 py-24 sm:py-36">
+    <section id="seniors" className="relative overflow-hidden bg-night px-6 py-16 sm:py-36">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_40%,rgba(230,195,106,0.05),transparent)]"
