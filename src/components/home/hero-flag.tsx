@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useLanguage, type Language } from "@/lib/language-context";
+import { SubscribeForm } from "@/components/home/subscribe-form";
 
 const VIDEO_SRC = "/videos/hero.mp4";
 const VIDEO_FALLBACK_SRC = "/videos/hero.mov";
@@ -132,12 +133,15 @@ export function HeroFlag() {
         <p className="max-w-full whitespace-nowrap text-[clamp(1.2rem,6.2cqw,2.45rem)] leading-none text-bone/90 drop-shadow-[0_5px_22px_rgba(0,0,0,0.96)]">
           {copy.subtitle}
         </p>
-        <a
-          href="mailto:crazyones.us@gmail.com"
-          className="mt-2 inline-flex items-center gap-2.5 rounded-full bg-bone px-8 py-4 text-[clamp(1rem,3cqw,1.1rem)] font-semibold text-night shadow-[0_8px_32px_rgba(0,0,0,0.55)] transition-all duration-300 hover:bg-gold hover:shadow-[0_8px_32px_rgba(230,195,106,0.28)]"
-        >
-          {copy.cta}
-        </a>
+        <div className="mt-1 flex w-full max-w-3xl flex-col items-center justify-center gap-3 sm:flex-row">
+          <SubscribeForm />
+          <a
+            href="mailto:crazyones.us@gmail.com"
+            className="inline-flex shrink-0 items-center gap-2.5 rounded-full bg-bone px-8 py-4 text-[clamp(1rem,3cqw,1.1rem)] font-semibold text-night shadow-[0_8px_32px_rgba(0,0,0,0.55)] transition-all duration-300 hover:bg-gold hover:shadow-[0_8px_32px_rgba(230,195,106,0.28)]"
+          >
+            {copy.cta}
+          </a>
+        </div>
       </div>
 
       <div

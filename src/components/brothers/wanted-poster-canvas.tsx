@@ -295,7 +295,7 @@ function drawPhoto(
 
   if (photo) {
     drawCoverImage(ctx, photo, x, y, width, height);
-    ctx.fillStyle = "rgba(204, 181, 132, 0.22)";
+    ctx.fillStyle = "rgba(204, 181, 132, 0.12)";
     ctx.globalCompositeOperation = "multiply";
     ctx.fillRect(x, y, width, height);
     ctx.globalCompositeOperation = "source-over";
@@ -436,25 +436,28 @@ function drawFounderName(ctx: CanvasRenderingContext2D, name: string) {
 }
 
 function drawBounty(ctx: CanvasRenderingContext2D, bounty: string) {
+  const numeric = isNumericBounty(bounty);
   const formatted = formatBounty(bounty);
 
   ctx.save();
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
-  drawInkAt(ctx, "₩", 136, 972, {
-    font: `900 74px ${WESTERN_FONT}`,
-    maxWidth: 70,
-  });
+  if (numeric) {
+    drawInkAt(ctx, "₩", 136, 972, {
+      font: `900 74px ${WESTERN_FONT}`,
+      maxWidth: 70,
+    });
+  }
   drawFitInkText(ctx, formatted, {
-    x: 172,
+    x: numeric ? 172 : 78,
     y: POSTER.bounty.y,
-    width: 500,
+    width: numeric ? 500 : 604,
     height: POSTER.bounty.height,
-    fontFamily: isNumericBounty(bounty) ? BOUNTY_FONT : KOREAN_FONT,
-    maxFontSize: isNumericBounty(bounty) ? 72 : 56,
-    minFontSize: 24,
-    weight: isNumericBounty(bounty) ? 400 : 900,
-    tracking: 2,
+    fontFamily: numeric ? BOUNTY_FONT : KOREAN_FONT,
+    maxFontSize: numeric ? 72 : 42,
+    minFontSize: 20,
+    weight: numeric ? 400 : 900,
+    tracking: 1,
   });
   ctx.restore();
 }
@@ -708,11 +711,14 @@ function drawCoverImage(
   width: number,
   height: number,
 ) {
-  const scale = Math.max(width / image.width, height / image.height);
-  const drawWidth = image.width * scale;
-  const drawHeight = image.height * scale;
+  // Cover the frame, then bias toward the upper third so a headshot's face stays in view.
+  const cover = Math.max(width / image.width, height / image.height) * 1.04;
+  const drawWidth = image.width * cover;
+  const drawHeight = image.height * cover;
   const drawX = x + (width - drawWidth) / 2;
-  const drawY = y + (height - drawHeight) / 2;
+  const overflowY = drawHeight - height;
+  const focusY = image.height >= image.width * 0.9 ? 0.28 : 0.42;
+  const drawY = y - overflowY * focusY;
 
   ctx.save();
   ctx.beginPath();
