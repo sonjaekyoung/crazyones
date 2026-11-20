@@ -121,7 +121,14 @@ export function SiteHeader() {
           </button>
         </nav>
 
-        {/* Mobile: rough thick hamburger / close */}
+        {/* Mobile: contact + hamburger */}
+        <div className="flex items-center gap-2 md:hidden">
+          <a
+            href="mailto:crazyones.us@gmail.com"
+            className="inline-flex items-center rounded-full bg-bone px-3.5 py-1.5 text-[0.78rem] font-semibold text-night transition-all duration-200 hover:bg-gold"
+          >
+            {labels.contact}
+          </a>
         <button
           type="button"
           aria-label={menuOpen ? labels.closeMenu : labels.openMenu}
@@ -153,6 +160,7 @@ export function SiteHeader() {
             />
           </span>
         </button>
+        </div>
       </div>
 
       {/* Mobile drawer */}
@@ -191,13 +199,6 @@ export function SiteHeader() {
                     {labels[item.labelKey]}
                   </motion.button>
                 ))}
-
-                <a
-                  href="mailto:crazyones.us@gmail.com"
-                  className="mt-3 inline-flex items-center justify-center rounded-full bg-bone px-5 py-3 text-[0.95rem] font-semibold text-night transition-all duration-200 hover:bg-gold"
-                >
-                  {labels.contact}
-                </a>
 
                 <div className="mt-4 flex items-center justify-between border-t border-seam pt-5">
                   <span className="text-sm text-ash">

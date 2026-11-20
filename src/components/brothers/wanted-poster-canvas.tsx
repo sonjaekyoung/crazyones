@@ -758,6 +758,8 @@ function wrapCanvasText(
 }
 
 function formatBounty(bounty: string) {
+  if (!isNumericBounty(bounty)) return bounty;
+
   const normalized = bounty.replace(/[^\d.]/g, "");
   const amount = Number.parseFloat(normalized);
 
@@ -769,8 +771,7 @@ function formatBounty(bounty: string) {
 }
 
 function isNumericBounty(bounty: string) {
-  const normalized = bounty.replace(/[^\d.]/g, "");
-  return !!normalized && !Number.isNaN(Number.parseFloat(normalized));
+  return /^[₩$]?\s*[\d,]+(?:\.\d+)?\s*-?$/.test(bounty.trim());
 }
 
 function loadImage(src: string): Promise<HTMLImageElement> {
