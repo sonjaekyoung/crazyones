@@ -37,6 +37,8 @@ const REST: Brother[] = [
   { id: "lee-do-hyeon", founderName: "이도현", companyName: "NeoMakes", bounty: "NeoMakes 대표", founderImageUrl: "/images/main-page/lee-do-hyeon.png" },
   { id: "lee-min-seok", founderName: "이민석", companyName: "비바디오스", bounty: "비바디오스 대표", founderImageUrl: "/images/main-page/lee-min-seok.png" },
   { id: "lee-yun-seok", founderName: "이윤석", companyName: "두잇", bounty: "두잇 창업자", founderImageUrl: "/images/main-page/lee-yun-seok.png" },
+  { id: "lee-jae-heon", founderName: "이재헌", companyName: "직행", bounty: "직행 창업자", founderImageUrl: "/images/main-page/lee-jae-heon.png" },
+  { id: "lim-yeon-jae", founderName: "임연재", companyName: "SENEH Robotics", bounty: "SENEH Robotics 창업자", founderImageUrl: "/images/main-page/lim-yeon-jae.png" },
   { id: "jeong-geun-sik", founderName: "정근식", companyName: "리필드", bounty: "리필드 대표", founderImageUrl: "/images/main-page/jeong-geun-sik.png" },
   { id: "ji-dong-hwan", founderName: "지동환", companyName: "Rhetoric", bounty: "Rhetoric 창업자", founderImageUrl: "/images/main-page/ji-dong-hwan.png" },
   { id: "ji-hyeon-jun", founderName: "지현준", companyName: "바카티오", bounty: "바카티오 창업자", founderImageUrl: "/images/main-page/ji-hyeon-jun.png" },
