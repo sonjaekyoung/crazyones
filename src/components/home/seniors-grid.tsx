@@ -46,9 +46,18 @@ const REST: Brother[] = [
   { id: "pyo-si-hyeong", founderName: "표시형", companyName: "아이언피그", bounty: "아이언피그 창업자", founderImageUrl: "/images/main-page/pyo-si-hyeong.png" },
 ];
 
+const LEAD_IDS = ["kim-jin-woo", "oh-jun-ho", "pyo-si-hyeong"];
+const ALL = [...FEATURED, ...REST];
+
 const PEOPLE: Brother[] = [
-  ...FEATURED,
-  ...[...REST].sort((a, b) => a.founderName.localeCompare(b.founderName, "ko")),
+  ...LEAD_IDS.map((id) => {
+    const person = ALL.find((entry) => entry.id === id);
+    if (!person) throw new Error(`Missing poster for ${id}`);
+    return person;
+  }),
+  ...ALL.filter((person) => !LEAD_IDS.includes(person.id)).sort((a, b) =>
+    a.founderName.localeCompare(b.founderName, "ko"),
+  ),
 ];
 
 function postersPerView() {
