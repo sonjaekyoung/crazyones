@@ -16,7 +16,7 @@ const FAQS: Record<Language, FaqItem[]> = {
     },
     {
       q: "How do people get selected?",
-      a: "Membership is currently by referral only.\n\nEvery applicant goes through two interviews. The first is with the founders living in Gwangin Hall, and admission requires unanimous approval. The final interview is with the founder of LINER, who started Gwangin Hall.\n\nWe don't optimize for resumes—we optimize for people we'd want to build alongside.",
+      a: "Membership is currently by referral only.\n\nEvery applicant goes through an interview with the founders living in Gwangin Hall, and admission requires unanimous approval.",
     },
     {
       q: "Do I have to live in the house to join?",
@@ -42,7 +42,7 @@ const FAQS: Record<Language, FaqItem[]> = {
     },
     {
       q: "어떻게 들어갈 수 있나요?",
-      a: "추천을 통해서만 입주할 수 있다.\n\n두 번의 면접을 거친다. 광인회관 거주 창업자들과의 얘기하고, 만장일치가 돼야 한다. \n\n마지막으로 광인회관을 시작한 LINER의 창업자와 면접을 거친다.",
+      a: "추천을 통해서만 입주할 수 있다.\n\n광인회관 거주 창업자들과의 얘기하고, 만장일치가 돼야 한다.",
     },
     {
       q: "꼭 같이 살아야 하나요?",
