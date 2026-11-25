@@ -6,6 +6,7 @@ import { SiteHeader } from "@/components/nav/site-header";
 import { SiteFooter } from "@/components/nav/site-footer";
 import { LanguageProvider } from "@/lib/language-context";
 import { SITE } from "@/config/site";
+import { SiteJsonLd } from "@/components/seo/site-json-ld";
 
 const griun = localFont({
   src: "./fonts/Griun_PolSensibility-Rg.ttf",
@@ -24,24 +25,51 @@ const gowun = Gowun_Batang({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: `${SITE.name} · Here’s to the Crazy Ones`,
+    default: SITE.name,
     template: `%s · ${SITE.name}`,
   },
   description: SITE.description,
+  applicationName: SITE.name,
+  authors: [{ name: SITE.name, url: SITE.url }],
+  creator: SITE.name,
   openGraph: {
     title: SITE.name,
     description: SITE.description,
     url: SITE.url,
     siteName: SITE.name,
     locale: "ko_KR",
+    alternateLocale: "en_US",
     type: "website",
+    images: [
+      {
+        url: SITE.logo,
+        width: 400,
+        height: 400,
+        alt: SITE.name,
+      },
+    ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: SITE.name,
     description: SITE.description,
+    images: [SITE.logo],
   },
-  robots: { index: true, follow: true },
+  icons: {
+    icon: SITE.logo,
+    apple: SITE.logo,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -53,6 +81,7 @@ export default function RootLayout({
       className={`${griun.variable} ${gowun.variable} h-full`}
     >
       <body className="min-h-full overflow-x-hidden bg-night text-bone antialiased">
+        <SiteJsonLd />
         <LanguageProvider>
           <SiteHeader />
           <main className="relative z-0 min-h-screen bg-night">{children}</main>

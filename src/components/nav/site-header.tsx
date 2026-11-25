@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { NEWSLETTER_URL } from "@/config/site";
 import { useLanguage, type Language } from "@/lib/language-context";
 
 const LABELS = {
@@ -11,6 +12,7 @@ const LABELS = {
     about: "소개",
     seniors: "광인들",
     faq: "FAQ",
+    newsletter: "뉴스레터",
     contact: "문의하기",
     toggle: "EN",
     homeLabel: "광인회관 홈",
@@ -21,6 +23,7 @@ const LABELS = {
     about: "About",
     seniors: "Alumni",
     faq: "FAQ",
+    newsletter: "Newsletter",
     contact: "Contact Us",
     toggle: "KO",
     homeLabel: "Gwangin Hall home",
@@ -105,6 +108,14 @@ export function SiteHeader() {
               {labels[item.labelKey]}
             </button>
           ))}
+          <a
+            href={NEWSLETTER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors hover:text-bone"
+          >
+            {labels.newsletter}
+          </a>
           <a
             href="mailto:crazyones.us@gmail.com"
             className="ml-1 inline-flex items-center rounded-full bg-bone px-5 py-1.5 text-[0.88rem] font-semibold text-night transition-all duration-200 hover:bg-gold"
@@ -199,6 +210,18 @@ export function SiteHeader() {
                     {labels[item.labelKey]}
                   </motion.button>
                 ))}
+                <motion.a
+                  href={NEWSLETTER_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, x: -8 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.05 + NAV_ITEMS.length * 0.05, duration: 0.35, ease: EASE }}
+                  onClick={() => setMenuOpen(false)}
+                  className="rounded-lg px-3 py-3.5 text-left text-[1.15rem] text-bone/80 transition-colors hover:bg-hall-elevated hover:text-bone"
+                >
+                  {labels.newsletter}
+                </motion.a>
 
                 <div className="mt-4 flex items-center justify-between border-t border-seam pt-5">
                   <span className="text-sm text-ash">

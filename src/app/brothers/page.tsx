@@ -5,6 +5,8 @@ export const metadata: Metadata = {
   title: "광인 형제",
   description:
     "우리는 같은 집에 모였고, 각자의 전장에서 깃발을 꽂고 있다. 광인회관의 형제들.",
+  alternates: { canonical: "/brothers" },
+  robots: { index: true, follow: true },
 };
 
 export default function BrothersPage() {

@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { SITE } from "@/config/site";
 import { HeroFlag } from "@/components/home/hero-flag";
 import { BrothersMarquee } from "@/components/home/brothers-marquee";
 import { EnvironmentCTA } from "@/components/home/environment-cta";
@@ -9,6 +11,27 @@ import { InvestorsGrid } from "@/components/home/investors-grid";
 import { VideoSection } from "@/components/home/video-section";
 import { FaqSection } from "@/components/home/faq-section";
 import { NewsletterCTA } from "@/components/home/newsletter-cta";
+
+export const metadata: Metadata = {
+  title: { absolute: SITE.name },
+  description: SITE.description,
+  openGraph: {
+    title: SITE.name,
+    description: SITE.description,
+    url: "/",
+    siteName: SITE.name,
+    locale: "ko_KR",
+    type: "website",
+  },
+  alternates: {
+    canonical: "/",
+    languages: {
+      "ko-KR": "/",
+      "en-US": "/en",
+      "x-default": "/",
+    },
+  },
+};
 
 export default function Page() {
   return (

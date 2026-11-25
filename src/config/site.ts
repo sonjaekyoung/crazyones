@@ -1,11 +1,27 @@
 export const SITE = {
   name: "광인회관",
+  alternateName: "Gwangin Hall",
   url: "https://crazyones.us",
-  description: "미쳐야 미친다. 세상을 바꿀 수 있다고 믿는 형제들의 회관.",
+  description: "광인회관은 서울 마포구 홍대에서 미친 창업가들이 함께 사는 집.",
+  descriptionEn:
+    "Official website of Gwangin Hall (광인회관), the house in Hongdae, Seoul where crazy founders live together.",
+  email: "crazyones.us@gmail.com",
+  logo: "/logo/kuang.png",
+  address: {
+    locality: "마포구",
+    region: "서울특별시",
+    country: "KR",
+  },
 
   blog: {
     label: "블로그",
     url: "https://crazyones2019.substack.com",
+    external: true,
+  },
+
+  newsletter: {
+    label: "뉴스레터",
+    url: "https://crazys-ones.beehiiv.com/",
     external: true,
   },
 
@@ -16,3 +32,4 @@ export const SITE = {
 } as const;
 
 export const BLOG_URL = SITE.blog.url;
+export const NEWSLETTER_URL = SITE.newsletter.url;

@@ -1,0 +1,13 @@
+# 광인회관
+
+> 광인회관(Gwangin Hall)의 공식 웹사이트. 서울 마포구 홍대에서 미친 창업가들이 함께 사는 집.
+
+This is the official website of 광인회관, also called Gwangin Hall. The canonical homepage is https://crazyones.us/.
+
+- 한국어: https://crazyones.us/
+- English: https://crazyones.us/en
+- 이메일: crazyones.us@gmail.com
+- 뉴스레터: https://crazys-ones.beehiiv.com/
+- 위치: 서울특별시 마포구 홍대
+
+광인회관은 추천을 통해서만 입주할 수 있다. 거주 창업가들과 이야기하고, 만장일치가 되어야 한다. 함께 사는 것에서 시작한다.

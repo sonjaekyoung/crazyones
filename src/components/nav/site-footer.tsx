@@ -1,6 +1,6 @@
 "use client";
 
-import { BLOG_URL } from "@/config/site";
+import { NEWSLETTER_URL } from "@/config/site";
 import { useLanguage, type Language } from "@/lib/language-context";
 
 const CONTACT_EMAIL = "crazyones.us@gmail.com";
@@ -10,32 +10,17 @@ const COPY = {
     motto: "\ubbf8\uccd0\uc57c \ubbf8\uce5c\ub2e4.",
     name: "\uad11\uc778\ud68c\uad00",
     location: "\uc11c\uc6b8\ud2b9\ubcc4\uc2dc \ub9c8\ud3ec\uad6c",
-    mediaLabel: "\ubbf8\ub514\uc5b4\ub97c Substack\uc5d0\uc11c \uc5f4\uae30",
+    newsletter: "\ub274\uc2a4\ub808\ud130",
     kicker: "\uad11\uc778\ub4e4\uc5d0\uac8c",
   },
   en: {
     motto: "Only those crazy enough can arrive.",
     name: "Gwangin Hall",
     location: "Mapo-gu, Seoul",
-    mediaLabel: "Open Media on Substack",
+    newsletter: "Newsletter",
     kicker: "Here\u2019s to the Crazy Ones",
   },
 } satisfies Record<Language, Record<string, string>>;
-
-function SubstackMark() {
-  return (
-    <svg
-      aria-hidden
-      viewBox="0 0 24 24"
-      className="h-7 w-7 md:h-8 md:w-8"
-      fill="none"
-    >
-      <path d="M6 5h12" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
-      <path d="M6 8.7h12" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
-      <path d="M6.8 12h10.4v7l-5.2-3.2L6.8 19v-7Z" fill="currentColor" />
-    </svg>
-  );
-}
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -63,25 +48,22 @@ export function SiteFooter() {
           </p>
         </div>
 
-        <div className="flex items-end justify-between gap-8 sm:justify-end">
-          <div className="flex min-w-0 flex-col items-start text-base leading-tight text-bone/55 sm:items-end">
-            <a
-              href={`mailto:${CONTACT_EMAIL}`}
-              className="max-w-full truncate text-bone/80 transition-colors hover:text-bone"
-            >
-              {CONTACT_EMAIL}
-            </a>
-            <span className="mt-1.5 text-sm text-bone/45">{copy.location}</span>
-          </div>
+        <div className="flex min-w-0 flex-col items-start text-base leading-tight text-bone/55 sm:items-end">
           <a
-            href={BLOG_URL}
+            href={NEWSLETTER_URL}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={copy.mediaLabel}
-            className="flex items-center justify-center text-bone/55 transition hover:-translate-y-0.5 hover:text-bone"
+            className="text-bone/80 transition-colors hover:text-bone"
           >
-            <SubstackMark />
+            {copy.newsletter}
           </a>
+          <a
+            href={`mailto:${CONTACT_EMAIL}`}
+            className="mt-1.5 max-w-full truncate text-bone/80 transition-colors hover:text-bone"
+          >
+            {CONTACT_EMAIL}
+          </a>
+          <span className="mt-1.5 text-sm text-bone/45">{copy.location}</span>
         </div>
       </div>
     </footer>
