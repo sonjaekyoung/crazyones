@@ -28,6 +28,18 @@ const LOGOS = GWANGIN_LOGO_LINKS.map((href, index) => {
   const isNeoMakes = href === "https://neomakes.com";
   const isVivaDios = href === "https://vivadios.dev";
   const isHorang = href === "https://horang.it";
+  const isOreum = href === "https://oreum.company";
+
+  if (isOreum) {
+    return {
+      outboundHref: `/out?to=${encodeURIComponent(href)}`,
+      src: "/images/logos-white/oreum-logo.svg",
+      label: "OREUM logo",
+      width: 700,
+      height: 576,
+      scale: 1.05,
+    };
+  }
 
   return {
     outboundHref: `/out?to=${encodeURIComponent(href)}`,

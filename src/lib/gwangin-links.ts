@@ -18,4 +18,5 @@ export const GWANGIN_LOGO_LINKS = [
   "https://neomakes.com",
   "https://vivadios.dev",
   "https://horang.it",
+  "https://oreum.company",
 ] as const;
