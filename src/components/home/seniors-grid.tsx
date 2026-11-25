@@ -27,7 +27,7 @@ const REST: Brother[] = [
   { id: "park-do-hyeon", founderName: "박도현", companyName: "스톡데일랩스", bounty: "스톡데일랩스 대표", founderImageUrl: "/images/main-page/park-do-hyeon.png" },
   { id: "park-ji-soo", founderName: "박지수", companyName: "수호아이오", bounty: "수호아이오 대표", founderImageUrl: "/images/main-page/park-ji-soo.png" },
   { id: "baek-hyeon-woo", founderName: "백현우", companyName: "플랜핏", bounty: "플랜핏 창업자", founderImageUrl: "/images/main-page/baek-hyeon-woo.png" },
-  { id: "son-jae-kyeong", founderName: "손재경", companyName: "오름", bounty: "오름 창업자", founderImageUrl: "/images/main-page/son-jae-kyeong.jpg" },
+  { id: "son-jae-kyeong", founderName: "손재경", companyName: "오름", bounty: "오름 창업자", founderImageUrl: "/images/main-page/son-jae-kyeong-20261126.png" },
   { id: "son-jae-kwon", founderName: "손재권", companyName: "더밀크", bounty: "더밀크 창업자", founderImageUrl: "/images/main-page/son-jae-kwon.png" },
   { id: "oh-jun-ho", founderName: "오준호", companyName: "마야크루", bounty: "마야크루 창업자", founderImageUrl: "/images/main-page/oh-jun-ho.png" },
   { id: "woo-chan-min", founderName: "우찬민", companyName: "Liner", bounty: "Liner 창업자", founderImageUrl: "/images/main-page/woo-chan-min.png" },
