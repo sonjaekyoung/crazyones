@@ -90,13 +90,14 @@ figcaption:hover, label:hover, em:hover, strong:hover, q:hover, code:hover {
   0%, 100% {
     opacity: 1;
   }
-  10%, 86% {
+  3%, 88% {
     opacity: 0;
   }
 }
 
 .hero-loop-fade-overlay {
   animation: hero-loop-fade 6.75s linear infinite;
+  animation-delay: -0.24s;
 }
 
 @keyframes brothers-marquee {

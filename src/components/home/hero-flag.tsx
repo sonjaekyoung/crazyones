@@ -7,6 +7,7 @@ import { SubscribeForm } from "@/components/home/subscribe-form";
 
 const VIDEO_SRC = "/videos/hero.mp4";
 const VIDEO_FALLBACK_SRC = "/videos/hero.mov";
+const POSTER_SRC = "/videos/hero-poster.jpg";
 
 const COPY = {
   ko: {
@@ -23,11 +24,9 @@ const COPY = {
 
 export function HeroFlag() {
   const [videoOk, setVideoOk] = useState(true);
-  const [videoReady, setVideoReady] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const { language } = useLanguage();
   const copy = COPY[language];
-  const videoVisible = videoOk && videoReady;
   const titleSizeClass =
     language === "ko"
       ? "text-[clamp(3.85rem,18cqw,10rem)]"
@@ -39,23 +38,20 @@ export function HeroFlag() {
     const video = videoRef.current;
     if (!video) return;
 
-    const markReady = () => setVideoReady(true);
+    const start = () => {
+      void video.play().catch(() => {
+        // Autoplay can be blocked until the tab is visible. The poster
+        // stays on screen, and the clip starts on the next successful play.
+      });
+    };
 
-    if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
-      markReady();
-    }
-
-    video.addEventListener("loadeddata", markReady);
-    video.addEventListener("canplay", markReady);
-    video.addEventListener("playing", markReady);
-    void video.play().catch(() => {
-      setVideoReady(false);
-    });
+    if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) start();
+    video.addEventListener("loadeddata", start);
+    video.addEventListener("canplay", start);
 
     return () => {
-      video.removeEventListener("loadeddata", markReady);
-      video.removeEventListener("canplay", markReady);
-      video.removeEventListener("playing", markReady);
+      video.removeEventListener("loadeddata", start);
+      video.removeEventListener("canplay", start);
     };
   }, [videoOk]);
 
@@ -75,6 +71,17 @@ export function HeroFlag() {
         className="pointer-events-none absolute inset-0 m-auto select-none opacity-[0.05]"
       />
 
+      <link rel="preload" as="image" href={POSTER_SRC} fetchPriority="high" />
+      <link rel="preload" as="video" href={VIDEO_SRC} type="video/mp4" fetchPriority="high" />
+      <img
+        src={POSTER_SRC}
+        alt=""
+        aria-hidden
+        fetchPriority="high"
+        decoding="sync"
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+      />
+
       {videoOk && (
         <video
           ref={videoRef}
@@ -83,29 +90,15 @@ export function HeroFlag() {
           muted
           playsInline
           preload="auto"
+          poster={POSTER_SRC}
           aria-hidden
-          onCanPlay={() => setVideoReady(true)}
-          onLoadedData={() => setVideoReady(true)}
-          onPlaying={() => setVideoReady(true)}
-          onError={() => {
-            setVideoReady(false);
-            setVideoOk(false);
-          }}
-          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ease-out ${
-            videoVisible ? "opacity-100" : "opacity-0"
-          }`}
+          onError={() => setVideoOk(false)}
+          className="absolute inset-0 h-full w-full object-cover"
         >
           <source src={VIDEO_SRC} type="video/mp4" />
           <source src={VIDEO_FALLBACK_SRC} type="video/quicktime" />
         </video>
       )}
-
-      <div
-        aria-hidden
-        className={`pointer-events-none absolute inset-0 z-[6] bg-black transition-opacity duration-1000 ease-out ${
-          videoVisible ? "opacity-0" : "opacity-100"
-        }`}
-      />
 
       <div aria-hidden className="absolute inset-0 bg-black/50" />
       <div
