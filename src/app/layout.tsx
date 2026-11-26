@@ -32,6 +32,12 @@ export const metadata: Metadata = {
   applicationName: SITE.name,
   authors: [{ name: SITE.name, url: SITE.url }],
   creator: SITE.name,
+  verification: {
+    google: "9zvVDtdrDphvWZ_kNQHNbu5eWu56J9rZnskeyVvaxOk",
+    other: {
+      "naver-site-verification": "3a2c7b5a7cf8c9c786b2ade1791bad008bc6d8e9",
+    },
+  },
   openGraph: {
     title: SITE.name,
     description: SITE.description,
